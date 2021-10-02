@@ -8,4 +8,11 @@ public class UIMainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+        Debug.Log("GameClosed");
+    }
+
 }
