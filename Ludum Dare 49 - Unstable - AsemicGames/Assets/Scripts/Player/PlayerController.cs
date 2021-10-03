@@ -6,12 +6,9 @@ public class PlayerController : MonoBehaviour, IDamageable
 {
     [Header("Stats")]
     public int gridMovement = 1;
-    public float speed = 0.5f;
-    [SerializeField] bool ableToMove = true;
-    [SerializeField] bool isDead = false;
-
-    [Header("Table")]
-    [SerializeField] LayerMask tableLayer;
+    public float speed = 3f;
+    [SerializeField] protected bool ableToMove = true;
+    [SerializeField] protected bool isDead = false;
 
     [Header("Grid")]
     [SerializeField] LayerMask gridLayer;
@@ -35,28 +32,17 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     //==============================
 
-    public void TakeDamage()
+    public virtual void TakeDamage()
     {
         isDead = true;
         anim.SetTrigger("IsDeath");
     }
 
-    void SetDirection(Vector3 direction)
+    protected virtual RaycastHit GetSpaceRaycastHit(Vector3 direction)
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, direction, out hit, gridDistance, gridLayer))
-        {
-            if (hit.transform.tag == "Table")
-            {
-                StartCoroutine(MoveCharacter(hit.transform.position));
-            }
-            else if (hit.transform.tag == "Void")
-            {
-                StartCoroutine(MoveCharacter(hit.transform.position));
-                anim.SetTrigger("IsFalling");
-                isDead = true;
-            }
-        }
+        Physics.Raycast(transform.position, direction, out hit, gridDistance, gridLayer);
+        return hit;
     }
 
     void InputMovement()
@@ -65,24 +51,39 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                SetDirection(transform.forward);
+                CheckSpaceAndMove(GetSpaceRaycastHit(transform.forward));
             }
             else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                SetDirection(-transform.forward);
+                CheckSpaceAndMove(GetSpaceRaycastHit(-transform.forward));
             }
             else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                SetDirection(-transform.right);
+                CheckSpaceAndMove(GetSpaceRaycastHit(-transform.right));
             }
             else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
-                SetDirection(transform.right);
+                CheckSpaceAndMove(GetSpaceRaycastHit(transform.right));
             }
         }
     }
 
-    IEnumerator MoveCharacter(Vector3 gridPos)
+    protected virtual void CheckSpaceAndMove(RaycastHit hit)
+    {
+        if (!hit.transform) return;
+        if (hit.transform.tag == "Table")
+        {
+            StartCoroutine(MoveCharacter(hit.transform.position));
+        }
+        else if (hit.transform.tag == "Void")
+        {
+            StartCoroutine(MoveCharacter(hit.transform.position));
+            anim.SetTrigger("IsFalling");
+            isDead = true;
+        }
+    }
+
+    public virtual IEnumerator MoveCharacter(Vector3 gridPos)
     {
         float time = 0f;
 
