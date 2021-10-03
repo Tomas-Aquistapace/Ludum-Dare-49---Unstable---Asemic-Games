@@ -10,7 +10,7 @@ public class JumpingPlayer : PlayerController
         base.CheckSpaceAndMove(hit);
         if (hit.transform.tag == "Step")
         {
-            StartCoroutine(MoveCharacter(hit.transform.position));
+            movementCorotine = StartCoroutine(MoveCharacter(hit.transform.position));
         }
     }
 }

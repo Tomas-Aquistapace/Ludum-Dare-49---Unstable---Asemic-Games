@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField] GameObject[] playerPrefabs;
+    public PlayerController[] playerPrefabs;
     Vector3 kindChangePos;
     
     public enum PlayerKind
@@ -21,9 +21,9 @@ public class PlayerData : MonoBehaviour
     void SetPlayerKind(PlayerKind newPlayerKind)
     {
         kindChangePos = playerPrefabs[(int)playerKind].transform.position;
-        playerPrefabs[(int)playerKind].SetActive(false);
+        playerPrefabs[(int)playerKind].gameObject.SetActive(false);
         playerKind = newPlayerKind;
-        playerPrefabs[(int)playerKind].SetActive(true);
+        playerPrefabs[(int)playerKind].gameObject.SetActive(true);
         playerPrefabs[(int)playerKind].transform.position = kindChangePos;
         StartCoroutine(WaitAndChangePlayerKind());
     }
@@ -41,4 +41,8 @@ public class PlayerData : MonoBehaviour
         SetPlayerKind(newPlayerKind);
     }
 
+    public PlayerController GetCurrentPlayer()
+    {
+        return playerPrefabs[(int)playerKind];
+    }
 }

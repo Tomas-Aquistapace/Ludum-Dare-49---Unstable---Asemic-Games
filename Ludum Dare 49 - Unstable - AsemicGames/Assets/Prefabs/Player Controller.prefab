@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1834509074810411472}
   - component: {fileID: 1730839638}
   - component: {fileID: 1730839637}
-  - component: {fileID: 1834509074810411479}
   m_Layer: 6
   m_Name: Player Controller
   m_TagString: Player
@@ -66,29 +65,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1834509074810411479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834509074810411473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae549314e3f815848a6c9ddf9d2b5b87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridMovement: 1
-  speed: 3
-  ableToMove: 1
-  isDead: 0
-  tableLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  gridLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  gridDistance: 1
 --- !u!1 &1834509075151125385
 GameObject:
   m_ObjectHideFlags: 0

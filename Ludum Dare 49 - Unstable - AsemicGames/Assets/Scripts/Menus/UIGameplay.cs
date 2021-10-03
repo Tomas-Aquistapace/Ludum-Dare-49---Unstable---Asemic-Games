@@ -8,29 +8,11 @@ public class UIGameplay : MonoBehaviour
     [Header("Pause Screen")]
     [SerializeField] GameObject pauseScreen;
 
-    [Header("Victory Screen")]
-    [SerializeField] GameObject victoryScreen;
-
-    [Header("Lose Screen")]
-    [SerializeField] GameObject loseScreen;
-
     //==============================
 
     bool gamePaused;
 
     //==============================
-
-    private void OnEnable()
-    {
-        PlayerController.OnVictory += CallVictory;
-        PlayerController.OnLose += CallLose;
-    }
-
-    private void OnDisable()
-    {
-        PlayerController.OnVictory -= CallVictory;
-        PlayerController.OnLose -= CallLose;
-    }
 
     private void Update()
     {
@@ -51,19 +33,16 @@ public class UIGameplay : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void ClosePause()
+    {
+        gamePaused = !gamePaused;
+        pauseScreen.SetActive(gamePaused);
+        Time.timeScale = 1;
+    }
+
     public void CloseGame()
     {
         Application.Quit();
         Debug.Log("GameClosed");
-    }
-
-    public void CallVictory()
-    {
-        victoryScreen.SetActive(true);
-    }
-
-    public void CallLose()
-    {
-        loseScreen.SetActive(true);
     }
 }
