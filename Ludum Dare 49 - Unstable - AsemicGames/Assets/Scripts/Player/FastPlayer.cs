@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FastPlayer : PlayerController
 {
-    [SerializeField] bool repeatStep = true;
     Vector3 lastDirection;
     [SerializeField] float fastSpeed = 6;
+    bool repeatStep = true;
 
     private void OnEnable()
     {
