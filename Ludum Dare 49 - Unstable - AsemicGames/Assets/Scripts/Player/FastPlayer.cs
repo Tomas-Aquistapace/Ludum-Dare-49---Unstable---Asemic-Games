@@ -41,11 +41,10 @@ public class FastPlayer : PlayerController
         else repeatStep = true;
     }
 
-    public override void RestartPlayer(Vector3 restartPos)
+    public override void RestartPlayer()
     {
-        base.RestartPlayer(restartPos);
+        base.RestartPlayer();
 
         repeatStep = true;
     }
-
 }

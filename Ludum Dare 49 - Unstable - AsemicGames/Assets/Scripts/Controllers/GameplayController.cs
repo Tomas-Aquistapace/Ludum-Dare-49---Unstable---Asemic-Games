@@ -10,7 +10,6 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
 
     [Header("Player")]
     [SerializeField] PlayerData playerObject;
-    [SerializeField] Vector3 playerInitialPosition;
 
     [Header("Levels")]
     [SerializeField] Timer timer;
@@ -34,15 +33,15 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
         PlayerController.OnLose -= CallLose;
     }
 
-    private void Start()
+    public override void Awake()
     {
+        base.Awake();
+
         foreach (GameObject lvl in LvlPrefab)
         {
             lvl.SetActive(false);
         }
         LvlPrefab[0].SetActive(true);
-
-        SetPlayerPosition();
     }
 
     //=======================
@@ -72,7 +71,7 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
 
     void SetPlayerPosition()
     {
-        playerObject.GetCurrentPlayer().RestartPlayer(playerInitialPosition);
+        playerObject.GetCurrentPlayer().RestartPlayer();
     }
 
     //=======================

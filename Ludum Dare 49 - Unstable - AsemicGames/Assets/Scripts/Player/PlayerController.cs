@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     //==============================
     
+    Vector3 initialPosition;
     Animator anim;
     protected Coroutine movementCorotine;
 
@@ -28,6 +29,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void Awake()
     {
         anim = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        initialPosition = transform.position;
     }
 
     private void Update()
@@ -83,6 +89,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         else if (hit.transform.tag == "Void")
         {
             movementCorotine = StartCoroutine(MoveCharacter(hit.transform.position));
+
             anim.SetTrigger("IsFalling");
             isDead = true;
         }
@@ -108,16 +115,17 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public Coroutine GetMovementCoroutine()
     {
-        ableToMove = true;
-
         return movementCorotine;
     }
 
-    public virtual void RestartPlayer(Vector3 restartPos)
+    public virtual void RestartPlayer()
     {
         if (GetMovementCoroutine() != null)
             StopCoroutine(GetMovementCoroutine());
 
-        transform.position = restartPos;
+        ableToMove = true;
+        isDead = false;
+
+        transform.position = initialPosition;
     }
 }
