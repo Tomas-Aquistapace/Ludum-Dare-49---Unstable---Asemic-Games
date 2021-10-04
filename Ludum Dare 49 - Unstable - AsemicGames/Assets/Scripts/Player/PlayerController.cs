@@ -74,7 +74,14 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     protected virtual void CheckSpaceAndMove(RaycastHit hit)
     {
-        if (!hit.transform) return;
+        if (!hit.transform)
+        {
+            int rand = UnityEngine.Random.Range(0, 3);
+            if (rand == 0) SoundController.Get().PlaySound(SoundController.Sounds.walk_blocked_a);
+            else if (rand == 1) SoundController.Get().PlaySound(SoundController.Sounds.walk_blocked_b);
+            else SoundController.Get().PlaySound(SoundController.Sounds.walk_blocked_c);
+            return;
+        }
         if (hit.transform.CompareTag("Table"))
         {
             movementCorotine = StartCoroutine(MoveCharacter(hit.transform.position));
@@ -82,6 +89,10 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         else if (hit.transform.CompareTag("Void"))
         {
+            int rand = UnityEngine.Random.Range(0, 3);
+            if (rand == 0) SoundController.Get().PlaySound(SoundController.Sounds.die_a);
+            else if (rand == 1) SoundController.Get().PlaySound(SoundController.Sounds.die_b);
+            else SoundController.Get().PlaySound(SoundController.Sounds.die_c);
             movementCorotine = StartCoroutine(MoveCharacter(hit.transform.position));
             anim.SetTrigger("IsFalling");
             isDead = true;
@@ -132,7 +143,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         return (isDead == false && ableToMove == true);
     }
 
-    public void AnimatePlayerMorph(bool morphToNext)
+    public virtual void AnimatePlayerMorph(bool morphToNext)
     {
         ableToMove = false;
         if (morphToNext) anim.SetTrigger("Morph_A");

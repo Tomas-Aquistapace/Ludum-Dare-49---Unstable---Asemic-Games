@@ -32,8 +32,13 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
         }
         LvlPrefab[0].SetActive(true);
     }
+    private void Start()
+    {
+        SoundController.Get().PlayGameplaySong();   
+    }
 
     //=======================
+
 
     public void OnLevelStarted()
     {

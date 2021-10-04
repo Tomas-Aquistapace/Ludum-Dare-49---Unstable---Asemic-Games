@@ -27,6 +27,7 @@ public class UIGameplay : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        SoundController.Get().StopMusic();
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
@@ -46,6 +47,7 @@ public class UIGameplay : MonoBehaviour
 
     public void RestartGame()
     {
+        SoundController.Get().StopMusic();
         SceneManager.LoadScene("Gameplay");
     }
 }

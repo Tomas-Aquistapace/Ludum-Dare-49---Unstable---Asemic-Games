@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BackgroundColor : MonoBehaviour
 {
-    Camera camera;
+    Camera cam;
     [SerializeField] Color[] colors;
     Color fromColor;
     Color toColor;
@@ -13,7 +13,7 @@ public class BackgroundColor : MonoBehaviour
     float timer;
     private void Awake()
     {
-        camera = GetComponent<Camera>();
+        cam = GetComponent<Camera>();
     }
 
     private void Start()
@@ -34,7 +34,7 @@ public class BackgroundColor : MonoBehaviour
             SetFromAndTo();
         }
         timer += Time.deltaTime;
-        camera.backgroundColor = Color.Lerp(fromColor, toColor, timer);
+        cam.backgroundColor = Color.Lerp(fromColor, toColor, timer);
     }
 
     void SetFromAndTo()

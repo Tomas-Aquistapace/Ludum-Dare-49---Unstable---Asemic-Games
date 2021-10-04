@@ -18,6 +18,10 @@ public class FastPlayer : PlayerController
         if (!hit.transform || hit.transform.CompareTag("Step"))
         {
             repeatStep = true;
+            int rand = UnityEngine.Random.Range(0, 3);
+            if (rand == 0) SoundController.Get().PlaySound(SoundController.Sounds.walk_blocked_a);
+            else if (rand == 1) SoundController.Get().PlaySound(SoundController.Sounds.walk_blocked_b);
+            else SoundController.Get().PlaySound(SoundController.Sounds.walk_blocked_c);
             return;
         }
         base.CheckSpaceAndMove(hit);
@@ -32,6 +36,9 @@ public class FastPlayer : PlayerController
 
     public override IEnumerator MoveCharacter(Vector3 gridPos)
     {
+        int rand = Random.Range(0, 2);
+        if (rand == 0) SoundController.Get().PlaySound(SoundController.Sounds.walk_triangulo_a);
+        else SoundController.Get().PlaySound(SoundController.Sounds.walk_triangulo_b);
         yield return base.MoveCharacter(gridPos);
         if (repeatStep)
         {
@@ -53,5 +60,12 @@ public class FastPlayer : PlayerController
         base.SetAsIdle();
 
         repeatStep = true;
+    }
+
+    public override void AnimatePlayerMorph(bool morphToNext)
+    {
+        base.AnimatePlayerMorph(morphToNext);
+        if (morphToNext) SoundController.Get().PlaySound(SoundController.Sounds.switch_circulo);
+        else SoundController.Get().PlaySound(SoundController.Sounds.switch_deca);
     }
 }

@@ -5,45 +5,64 @@ public class SoundController : MonoBehaviourSingleton<SoundController>
 {
     public enum Sounds
     {
-        
+        easter_egg,
+        die_a,
+        die_b,
+        die_c,
+        level_end,
+        level_start,
+        switch_circulo,
+        switch_deca,
+        switch_triangulo,
+        walk_blocked_a,
+        walk_blocked_b,
+        walk_blocked_c,
+        walk_circulo_a,
+        walk_circulo_b,
+        walk_deca_a,
+        walk_deca_b,
+        walk_triangulo_a,
+        walk_triangulo_b,
+        transition
     }
 
     public enum Songs
     {
-        
+        music_final,
+        music_menu
     }
-
-    bool dayMusicOn = true;
 
     [SerializeField] float volumeIncreaseDuration = 1f;
 
     [SerializeField] AudioSource[] musicSources = null;
 
-    int currentSong = 0;
-
     public AudioClip[] sfx;
 
     [Header("Sound Options")]
     public bool soundOn = true;
-    private void Start()
+
+    public void PlayGameplaySong()
     {
-        ChangeGameplaySong();   
+        musicSources[(int)Songs.music_final].Play();
     }
 
-    public void ChangeGameplaySong()
+    public void PlayMenuSong()
     {
-        if((currentSong - 1)>=0) musicSources[currentSong-1].Stop();
-        musicSources[currentSong].Play();
-        musicSources[currentSong].volume = 0;
-        StartCoroutine(FadeIn(musicSources[currentSong]));
-        currentSong++;
+        musicSources[(int)Songs.music_menu].Play();
     }
 
+    public void StopMusic()
+    {
+        foreach (AudioSource music in musicSources)
+        {
+            music.Stop();
+        }
+    }
 
     public void PlaySound(Sounds sound)
     {
         if (soundOn)
-            AudioSource.PlayClipAtPoint(sfx[(int)sound], Vector3.zero);
+            AudioSource.PlayClipAtPoint(sfx[(int)sound], Vector3.zero, 1);
     }
 
     public void ToggleSound()

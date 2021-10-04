@@ -11,4 +11,9 @@ public class TransitionBetweenLvl : MonoBehaviour
     {
         GameplayController.Get().OnLevelStarted();
     }
+
+    public void PlayTransitionSound()
+    {
+        SoundController.Get().PlaySound(SoundController.Sounds.transition);
+    }
 }
