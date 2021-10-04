@@ -45,4 +45,9 @@ public class UIGameplay : MonoBehaviour
         Application.Quit();
         Debug.Log("GameClosed");
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Gameplay");
+    }
 }
