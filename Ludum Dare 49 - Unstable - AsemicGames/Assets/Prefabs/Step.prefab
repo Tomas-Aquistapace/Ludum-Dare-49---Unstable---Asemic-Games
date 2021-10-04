@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 3757041927865384407}
   m_Layer: 10
   m_Name: Position
-  m_TagString: Table
+  m_TagString: Step
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
