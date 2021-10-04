@@ -5,6 +5,7 @@ public class FlagBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.tag == "Player")
-            GameplayController.Get().SwapToNextLevel();
+            GameplayController.Get().CallTransitionAnimation();
+        //GameplayController.Get().SwapToNextLevel();
     }
 }

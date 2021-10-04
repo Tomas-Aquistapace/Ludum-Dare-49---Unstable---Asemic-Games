@@ -14,6 +14,7 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
     [Header("Levels")]
     [SerializeField] Timer timer;
     [SerializeField] GameObject[] LvlPrefab;
+    [SerializeField] Animator transitionAnim;
 
     //=======================
 
@@ -52,13 +53,19 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
         SwapToNextLevel();
     }
 
+    public void CallTransitionAnimation()
+    {
+        transitionAnim.SetTrigger("Start");
+    }
+
     public void SwapToNextLevel()
     {
-        LvlPrefab[currentLvl].SetActive(false);
         currentLvl++;
         
         if (currentLvl < LvlPrefab.Length)
         {
+            LvlPrefab[currentLvl - 1].SetActive(false);
+            
             SetPlayerPosition();
 
             LvlPrefab[currentLvl].SetActive(true);
