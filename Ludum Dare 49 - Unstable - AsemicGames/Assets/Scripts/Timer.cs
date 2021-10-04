@@ -5,12 +5,13 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] float generalTimer;
     [SerializeField] float baseLvlTime = 30;
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI leftoverTimeText;
     [SerializeField] Animator timerAnimator;
+    
     int leftoverTime;
+    float generalTimer;
     bool timerRunning;
 
     private void Start()
@@ -57,7 +58,7 @@ public class Timer : MonoBehaviour
         if (generalTimer < 0)
         {
             generalTimer = 0;
-            Debug.Log("Perdiste :(");
+            GameplayController.Get().CallLose();
         }
         UpdateTimerVisual();
     }

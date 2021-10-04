@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridMovement: 1
-  speed: 3
+  speed: 2
   ableToMove: 1
   isDead: 0
   gridLayer:

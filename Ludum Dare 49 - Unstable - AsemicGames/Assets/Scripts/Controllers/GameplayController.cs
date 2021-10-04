@@ -22,18 +22,6 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
 
     //=======================
 
-    protected void OnEnable()
-    {
-        PlayerController.OnVictory += CallVictory;
-        PlayerController.OnLose += CallLose;
-    }
-
-    protected void OnDisable()
-    {
-        PlayerController.OnVictory -= CallVictory;
-        PlayerController.OnLose -= CallLose;
-    }
-
     public override void Awake()
     {
         base.Awake();
@@ -46,12 +34,6 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
     }
 
     //=======================
-
-    public void NextLVL() // no usada?
-    {
-        timer.OnLevelStart();
-        SwapToNextLevel();
-    }
 
     public void OnLevelStarted()
     {

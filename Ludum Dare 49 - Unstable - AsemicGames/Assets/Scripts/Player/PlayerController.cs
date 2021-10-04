@@ -4,9 +4,6 @@ using System;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    public static Action OnVictory;
-    public static Action OnLose;
-
     [Header("Stats")]
     public int gridMovement = 1;
     public float speed = 3f;
