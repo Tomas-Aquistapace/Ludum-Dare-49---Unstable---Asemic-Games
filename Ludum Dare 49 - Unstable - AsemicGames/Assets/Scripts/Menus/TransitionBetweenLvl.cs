@@ -6,4 +6,9 @@ public class TransitionBetweenLvl : MonoBehaviour
     {
         GameplayController.Get().SwapToNextLevel();
     }
+
+    public void OnLevelStarted()
+    {
+        GameplayController.Get().OnLevelStarted();
+    }
 }

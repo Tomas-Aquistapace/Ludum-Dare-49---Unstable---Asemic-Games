@@ -44,7 +44,6 @@ public class Timer : MonoBehaviour
     {
         timerRunning = false;
         leftoverTime = (int)generalTimer;
-        
     }
 
     void UpdateTimer()

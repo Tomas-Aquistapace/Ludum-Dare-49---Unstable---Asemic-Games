@@ -47,10 +47,15 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
 
     //=======================
 
-    public void NextLVL()
+    public void NextLVL() // no usada?
     {
-        timer.OnLevelEnd();
+        timer.OnLevelStart();
         SwapToNextLevel();
+    }
+
+    public void OnLevelStarted()
+    {
+        timer.OnLevelStart();
     }
 
     public void CallTransitionAnimation()
@@ -61,7 +66,7 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
     public void SwapToNextLevel()
     {
         currentLvl++;
-        
+        timer.OnLevelEnd();
         if (currentLvl < LvlPrefab.Length)
         {
             LvlPrefab[currentLvl - 1].SetActive(false);
