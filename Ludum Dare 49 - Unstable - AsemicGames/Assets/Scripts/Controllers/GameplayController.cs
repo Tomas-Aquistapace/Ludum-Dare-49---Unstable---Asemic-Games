@@ -78,11 +78,13 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
 
     public void CallVictory()
     {
+        playerObject.gameObject.SetActive(false);
         victoryScreen.SetActive(true);
     }
 
     public void CallLose()
     {
+        playerObject.gameObject.SetActive(false);
         loseScreen.SetActive(true);
     }
 }
