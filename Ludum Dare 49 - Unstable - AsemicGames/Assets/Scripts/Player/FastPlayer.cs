@@ -15,7 +15,7 @@ public class FastPlayer : PlayerController
 
     protected override void CheckSpaceAndMove(RaycastHit hit)
     {
-        if (!hit.transform)
+        if (!hit.transform || hit.transform.CompareTag("Step"))
         {
             repeatStep = true;
             return;
@@ -44,6 +44,13 @@ public class FastPlayer : PlayerController
     public override void RestartPlayer()
     {
         base.RestartPlayer();
+
+        repeatStep = true;
+    }
+
+    public override void SetAsIdle()
+    {
+        base.SetAsIdle();
 
         repeatStep = true;
     }

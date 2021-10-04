@@ -19,18 +19,14 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     [Header("Animations")]
     [SerializeField] protected Animator anim;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     //==============================
     
-    Vector3 initialPosition;
+    [HideInInspector] public Vector3 initialPosition;
     protected Coroutine movementCorotine;
 
     //==============================
-
-    private void Start()
-    {
-        initialPosition = transform.position;
-    }
 
     private void Update()
     {
@@ -58,18 +54,22 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
+                spriteRenderer.flipX = true;
                 CheckSpaceAndMove(GetSpaceRaycastHit(transform.forward));
             }
             else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
+                spriteRenderer.flipX = false;
                 CheckSpaceAndMove(GetSpaceRaycastHit(-transform.forward));
             }
             else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                spriteRenderer.flipX = true;
                 CheckSpaceAndMove(GetSpaceRaycastHit(-transform.right));
             }
             else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
+                spriteRenderer.flipX = false;
                 CheckSpaceAndMove(GetSpaceRaycastHit(transform.right));
             }
         }
@@ -78,12 +78,12 @@ public class PlayerController : MonoBehaviour, IDamageable
     protected virtual void CheckSpaceAndMove(RaycastHit hit)
     {
         if (!hit.transform) return;
-        if (hit.transform.tag == "Table")
+        if (hit.transform.CompareTag("Table"))
         {
             movementCorotine = StartCoroutine(MoveCharacter(hit.transform.position));
             anim.SetTrigger("IsMoving");
         }
-        else if (hit.transform.tag == "Void")
+        else if (hit.transform.CompareTag("Void"))
         {
             movementCorotine = StartCoroutine(MoveCharacter(hit.transform.position));
             anim.SetTrigger("IsFalling");
@@ -119,9 +119,26 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (GetMovementCoroutine() != null)
             StopCoroutine(GetMovementCoroutine());
 
-        ableToMove = true;
-        isDead = false;
+        SetAsIdle();
 
         transform.position = initialPosition;
+    }
+
+    public virtual void SetAsIdle()
+    {
+        isDead = false;
+        ableToMove = true;
+    }
+
+    public bool GetIdle()
+    {
+        return (isDead == false && ableToMove == true);
+    }
+
+    public void AnimatePlayerMorph(bool morphToNext)
+    {
+        ableToMove = false;
+        if (morphToNext) anim.SetTrigger("Morph_A");
+        else anim.SetTrigger("Morph_B");
     }
 }

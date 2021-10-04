@@ -8,7 +8,7 @@ public class JumpingPlayer : PlayerController
     {
         if (!hit.transform) return;
         base.CheckSpaceAndMove(hit);
-        if (hit.transform.tag == "Step")
+        if (hit.transform.CompareTag("Step"))
         {
             movementCorotine = StartCoroutine(MoveCharacter(hit.transform.position));
             anim.SetTrigger("IsMoving");

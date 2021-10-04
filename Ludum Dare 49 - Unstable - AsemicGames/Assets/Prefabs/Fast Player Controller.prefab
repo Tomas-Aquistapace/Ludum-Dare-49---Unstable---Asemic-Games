@@ -67,6 +67,7 @@ MonoBehaviour:
     m_Bits: 1024
   gridDistance: 1
   anim: {fileID: 2125003372}
+  spriteRenderer: {fileID: 2125003374}
   fastSpeed: 6
 --- !u!1 &8252903012565636097
 GameObject:

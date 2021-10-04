@@ -8,4 +8,10 @@ public class CallAnimationsEvents : MonoBehaviour
     {
         playerController.RestartPlayer();
     }
+
+    public void OnEndMorph()
+    {
+        playerController.SetAsIdle(); //cuidado porque esto pone el isDead en false
+    }
+
 }

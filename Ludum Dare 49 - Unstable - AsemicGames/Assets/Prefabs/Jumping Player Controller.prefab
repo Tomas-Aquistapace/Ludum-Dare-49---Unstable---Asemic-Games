@@ -67,6 +67,7 @@ MonoBehaviour:
     m_Bits: 1024
   gridDistance: 1
   anim: {fileID: 2134676814}
+  spriteRenderer: {fileID: 2134676815}
 --- !u!1 &3771402501319261663
 GameObject:
   m_ObjectHideFlags: 0

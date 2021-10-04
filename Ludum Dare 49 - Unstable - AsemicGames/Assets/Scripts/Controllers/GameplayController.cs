@@ -21,13 +21,13 @@ public class GameplayController : MonoBehaviourSingleton<GameplayController>
 
     //=======================
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         PlayerController.OnVictory += CallVictory;
         PlayerController.OnLose += CallLose;
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         PlayerController.OnVictory -= CallVictory;
         PlayerController.OnLose -= CallLose;
