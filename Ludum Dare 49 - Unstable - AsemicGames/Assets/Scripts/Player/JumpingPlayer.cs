@@ -11,6 +11,7 @@ public class JumpingPlayer : PlayerController
         if (hit.transform.tag == "Step")
         {
             movementCorotine = StartCoroutine(MoveCharacter(hit.transform.position));
+            anim.SetTrigger("IsMoving");
         }
     }
 }

@@ -306,11 +306,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tough Player Controller
       objectReference: {fileID: 0}
-    - target: {fileID: 2454864620484034771, guid: e7fc7171e14cff6449899e8bc769b08e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7fc7171e14cff6449899e8bc769b08e, type: 3}
 --- !u!114 &254554283 stripped
@@ -560,11 +555,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fast Player Controller
-      objectReference: {fileID: 0}
-    - target: {fileID: 8252903011078814496, guid: 128fc3db87777d64bb1a80d49428fc00,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8252903011078814497, guid: 128fc3db87777d64bb1a80d49428fc00,
         type: 3}
@@ -1323,11 +1313,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Jumping Player Controller
-      objectReference: {fileID: 0}
-    - target: {fileID: 3771402500385805054, guid: 24861b5bdb7a6844d98c50ef983b4d8a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3771402500385805055, guid: 24861b5bdb7a6844d98c50ef983b4d8a,
         type: 3}

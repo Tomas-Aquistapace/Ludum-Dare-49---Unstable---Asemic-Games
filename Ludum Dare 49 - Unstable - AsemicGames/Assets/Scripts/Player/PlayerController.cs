@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -18,18 +17,15 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] LayerMask gridLayer;
     [SerializeField] float gridDistance = 1f;
 
+    [Header("Animations")]
+    [SerializeField] protected Animator anim;
+
     //==============================
     
     Vector3 initialPosition;
-    Animator anim;
     protected Coroutine movementCorotine;
 
     //==============================
-
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
 
     private void Start()
     {
@@ -85,11 +81,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (hit.transform.tag == "Table")
         {
             movementCorotine = StartCoroutine(MoveCharacter(hit.transform.position));
+            anim.SetTrigger("IsMoving");
         }
         else if (hit.transform.tag == "Void")
         {
             movementCorotine = StartCoroutine(MoveCharacter(hit.transform.position));
-
             anim.SetTrigger("IsFalling");
             isDead = true;
         }
