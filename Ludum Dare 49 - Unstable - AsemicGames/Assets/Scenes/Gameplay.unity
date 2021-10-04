@@ -246,11 +246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1558332586}
     m_Modifications:
-    - target: {fileID: 1360596859, guid: e7fc7171e14cff6449899e8bc769b08e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 2712099024979020629, guid: b270cf7b29c7264439a45e1877abd4f6,
-        type: 3}
     - target: {fileID: 2454864620484034770, guid: e7fc7171e14cff6449899e8bc769b08e,
         type: 3}
       propertyPath: m_RootOrder
@@ -310,11 +305,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tough Player Controller
-      objectReference: {fileID: 0}
-    - target: {fileID: 2454864620484034771, guid: e7fc7171e14cff6449899e8bc769b08e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7fc7171e14cff6449899e8bc769b08e, type: 3}
@@ -645,24 +635,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1558332586}
     m_Modifications:
-    - target: {fileID: 2125003374, guid: 128fc3db87777d64bb1a80d49428fc00, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2125003374, guid: 128fc3db87777d64bb1a80d49428fc00, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 5572112334787168468, guid: ac156169f06012d4d9c585890642e07a,
-        type: 3}
     - target: {fileID: 8252903011078814496, guid: 128fc3db87777d64bb1a80d49428fc00,
         type: 3}
       propertyPath: m_Name
       value: Fast Player Controller
-      objectReference: {fileID: 0}
-    - target: {fileID: 8252903011078814496, guid: 128fc3db87777d64bb1a80d49428fc00,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8252903011078814497, guid: 128fc3db87777d64bb1a80d49428fc00,
         type: 3}
@@ -996,7 +972,7 @@ PrefabInstance:
     - target: {fileID: 3639172598505014039, guid: f47ceb5db7f8ef7468626b8600747087,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f47ceb5db7f8ef7468626b8600747087, type: 3}
@@ -2052,20 +2028,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1558332586}
     m_Modifications:
-    - target: {fileID: 2134676815, guid: 24861b5bdb7a6844d98c50ef983b4d8a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 2016132312662180121, guid: c6eba7f4271d69e45b19aeb9bec50aa4,
-        type: 3}
     - target: {fileID: 3771402500385805054, guid: 24861b5bdb7a6844d98c50ef983b4d8a,
         type: 3}
       propertyPath: m_Name
       value: Jumping Player Controller
-      objectReference: {fileID: 0}
-    - target: {fileID: 3771402500385805054, guid: 24861b5bdb7a6844d98c50ef983b4d8a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3771402500385805055, guid: 24861b5bdb7a6844d98c50ef983b4d8a,
         type: 3}
