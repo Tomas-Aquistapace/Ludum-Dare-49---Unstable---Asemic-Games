@@ -245,8 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d9b1c8b238b5f249bbb10c2eb402c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalTimer: 0
-  baseLvlTime: 15
+  baseLvlTime: 10
   timerText: {fileID: 4519552175895953097}
   leftoverTimeText: {fileID: 4519552176177827271}
   timerAnimator: {fileID: 4519552175895953098}
